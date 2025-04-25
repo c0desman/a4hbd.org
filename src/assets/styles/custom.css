@@ -1,0 +1,7 @@
+/*
+    All the custom css will be found here
+*/
+
+.bg-hero-bg {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+}

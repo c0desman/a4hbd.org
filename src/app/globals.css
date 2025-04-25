@@ -1,26 +1,274 @@
 @import "tailwindcss";
+@import "../assets/styles/custom.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* Custom Components */
+@Layer components {
+    .mask-triangle-tl {
+        clip-path: polygon(
+        40px 0%, /* Triangle size */
+        100% 0%,
+        100% 100%,
+        0% 100%,
+        0% 40px
+        );
+    }
+    
+    .mask-triangle-border {
+        clip-path: polygon(
+        40px 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%,
+        0% 40px
+        );
+        background-color: #22c55e; /* Tailwind's green-500 */
+        z-index: 0;
+    }
 }
 
-root:root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* default font size */
+h1 {
+    @apply text-2xl leading-tight; /* ~text-2xl (24px), tight line height */
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  h2 {
+    @apply text-xl leading-snug;
+  }
+  h3 {
+    @apply text-lg leading-snug;
+  }
+  h4 {
+    @apply text-base leading-normal;
+  }
+  h5 {
+    @apply text-base leading-normal;
+  }
+  h6 {
+    @apply text-sm leading-normal;
+  }
+  p {
+    @apply text-sm leading-relaxed;
+  }
+  a {
+    @apply text-sm leading-relaxed;
+  }
+  
+  /* Small screens (min-width: 640px = sm) */
+  @media (min-width: 640px) {
+    h1 {
+      @apply text-3xl leading-tight; /* sm:text-3xl */
+    }
+    h2 {
+      @apply text-2xl leading-snug;
+    }
+    h3 {
+      @apply text-xl leading-snug;
+    }
+    h4 {
+      @apply text-lg leading-normal;
+    }
+    h5 {
+      @apply text-base leading-normal;
+    }
+    h6 {
+      @apply text-base leading-normal;
+    }
+    p {
+      @apply text-base leading-relaxed;
+    }
+    a {
+      @apply text-base leading-relaxed;
+    }
+  }
+  
+  /* Medium screens (min-width: 768px = md) */
+  @media (min-width: 768px) {
+    h1 {
+      @apply text-3xl leading-tight; /* md:text-3xl */
+    }
+    h2 {
+      @apply text-2xl leading-snug;
+    }
+    h3 {
+      @apply text-xl leading-snug;
+    }
+    h4 {
+      @apply text-lg leading-normal;
+    }
+    h5 {
+      @apply text-base leading-normal;
+    }
+    h6 {
+      @apply text-base leading-normal;
+    }
+    p {
+      @apply text-lg leading-relaxed;
+    }
+    a {
+      @apply text-lg leading-relaxed;
+    }
+  }
+  
+  /* Large screens (min-width: 1024px = lg) */
+  @media (min-width: 1024px) {
+    h1 {
+      @apply text-4xl leading-tight; /* lg:text-4xl (36px) */
+    }
+    h2 {
+      @apply text-3xl leading-snug;
+    }
+    h3 {
+      @apply text-2xl leading-snug;
+    }
+    h4 {
+      @apply text-xl leading-normal;
+    }
+    h5 {
+      @apply text-lg leading-normal;
+    }
+    h6 {
+      @apply text-base leading-normal;
+    }
+    p {
+      @apply text-lg leading-relaxed;
+    }
+    a {
+      @apply text-lg leading-relaxed;
+    }
+  }
+    /* Extra large screens (min-width: 1280px = xl) */
+    @media (min-width: 1280px) {
+        h1 {
+            @apply text-4xl leading-tight; /* xl:text-4xl */
+        }
+        h2 {
+            @apply text-3xl leading-snug;
+        }
+        h3 {
+            @apply text-2xl leading-snug;
+        }
+        h4 {
+            @apply text-xl leading-normal;
+        }
+        h5 {
+            @apply text-lg leading-normal;
+        }
+        h6 {
+            @apply text-base leading-normal;
+        }
+        p {
+            @apply text-lg leading-relaxed;
+        }
+        a {
+            @apply text-lg leading-relaxed;
+        }
+        }
+        /* 2xl screens (min-width: 1536px = 2xl) */
+        @media (min-width: 1536px) {
+            h1 {
+                @apply text-5xl leading-tight; /* 2xl:text-5xl */
+            }
+            h2 {
+                @apply text-4xl leading-snug;
+            }
+            h3 {
+                @apply text-3xl leading-snug;
+            }
+            h4 {
+                @apply text-2xl leading-normal;
+            }
+            h5 {
+                @apply text-xl leading-normal;
+            }
+            h6 {
+                @apply text-lg leading-normal;
+            }
+            p {
+                @apply text-lg leading-relaxed;
+            }
+            a {
+                @apply text-lg leading-relaxed;
+            }
+        }
+        /* 3xl screens (min-width: 1920px = 3xl) */
+        @media (min-width: 1920px) {
+            h1 {
+                @apply text-6xl leading-tight; /* 3xl:text-6xl */
+            }
+            h2 {
+                @apply text-5xl leading-snug;
+            }
+            h3 {
+                @apply text-4xl leading-snug;
+            }
+            h4 {
+                @apply text-3xl leading-normal;
+            }
+            h5 {
+                @apply text-2xl leading-normal;
+            }
+            h6 {
+                @apply text-xl leading-normal;
+            }
+            p {
+                @apply text-lg leading-relaxed;
+            }
+            a {
+                @apply text-lg leading-relaxed;
+            }
+        }
+        /* 4xl screens (min-width: 2560px = 4xl) */
+        @media (min-width: 2560px) {
+            h1 {
+                @apply text-7xl leading-tight; /* 4xl:text-7xl */
+            }
+            h2 {
+                @apply text-6xl leading-snug;
+            }
+            h3 {
+                @apply text-5xl leading-snug;
+            }
+            h4 {
+                @apply text-4xl leading-normal;
+            }
+            h5 {
+                @apply text-3xl leading-normal;
+            }
+            h6 {
+                @apply text-2xl leading-normal;
+            }
+            p {
+                @apply text-lg leading-relaxed;
+            }
+            a {
+                @apply text-lg leading-relaxed;
+            }
+        }
+        /* 5xl screens (min-width: 3840px = 5xl) */
+        @media (min-width: 3840px) {
+            h1 {
+                @apply text-8xl leading-tight; /* 5xl:text-8xl */
+            }
+            h2 {
+                @apply text-7xl leading-snug;
+            }
+            h3 {
+                @apply text-6xl leading-snug;
+            }
+            h4 {
+                @apply text-5xl leading-normal;
+            }
+            h5 {
+                @apply text-4xl leading-normal;
+            }
+            h6 {
+                @apply text-3xl leading-normal;
+            }
+            p {
+                @apply text-lg leading-relaxed;
+            }
+            a {
+                @apply text-lg leading-relaxed;
+            }
+        }
