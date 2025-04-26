@@ -47,11 +47,11 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 bg-white transition-shadow ${isScrolled ? 'shadow-md' : ''}`}>
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-18">
           {/* Logo */}
-          <div className="flex items-center">
-            <Image src="/logo/light-logo.png" width={100} height={70} className='' alt='Aid For Humanity' />
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image src="/logo/light-logo.png" width={120} height={90} className='' alt='Aid For Humanity' />
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6 items-center">
@@ -82,7 +82,7 @@ const Navbar = () => {
 
             <Link
               href="/projects"
-              className="ml-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md font-medium"
+              className="ml-4 bg-primary hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md font-medium"
             >
               Projects
             </Link>

@@ -1,16 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Open_Sans } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/essentials/navbar";
 import Footer from "@/components/essentials/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '500']
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const openSans = Open_Sans({ 
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+  weight: ['400', '600', '700']
 });
 
 export const metadata = {
@@ -35,7 +37,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
-      <head className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" href={metadata.favicons.apple} />
         <link rel="icon" href={metadata.favicons.android} />
@@ -47,7 +49,7 @@ export default function RootLayout({ children }) {
         <meta name="og:description" content={metadata.description} />
         <meta name="og:image" alt={metadata.image.alt} content={metadata.image.src} />
       </head>
-      <body className="">
+      <body className={`${inter.className} ${openSans.className}`}>
         <Navbar />
         {children}
         <Footer />

@@ -1,6 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Inter:wght@400;500&display=swap');
 @import "tailwindcss";
 @import "../assets/styles/custom.css";
 
+
+:root {
+  --color-primary: #0B98D5;
+  --color-secondary: #F9B118;
+}
+
+/* Apply fonts to all elements */
+body {
+  font-family: 'Inter', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+}
 
 /* Custom Components */
 @Layer components {
@@ -25,60 +39,101 @@
         background-color: #22c55e; /* Tailwind's green-500 */
         z-index: 0;
     }
+    .text-secondary {
+        color: var(--color-secondary);
+    }
+    .bg-secondary {
+        background-color: var(--color-secondary);
+    }
+    .bg-primary-gradient {
+        background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    }
+    .text-heading {
+      @apply text-xl sm:text-lg font-semibold;
+    }
+    
+    .text-body {
+      @apply text-base sm:text-sm;
+    }
+    
+    .bg-primary {
+      @apply bg-[#0B98D5]; /* Replace with your primary */
+    }
+    
+    .text-primary {
+      @apply text-[#0B98D5]; /* Replace with your primary */
+    }
 }
 
 
 /* default font size */
 h1 {
-    @apply text-2xl leading-tight; /* ~text-2xl (24px), tight line height */
+    @apply text-3xl leading-tight; /* ~text-2xl (24px), tight line height */
+    font-weight: 700;
   }
   h2 {
-    @apply text-xl leading-snug;
+    @apply text-2xl leading-snug;
+    font-weight: 700;
   }
   h3 {
-    @apply text-lg leading-snug;
+    @apply text-xl leading-snug;
+    font-weight: 700;
   }
   h4 {
-    @apply text-base leading-normal;
+    @apply text-lg leading-normal;
+    font-weight: 700;
   }
   h5 {
     @apply text-base leading-normal;
+    font-weight: 600;
   }
   h6 {
     @apply text-sm leading-normal;
+    font-weight: 600;
   }
   p {
-    @apply text-sm leading-relaxed;
+    font-size: 1rem; /* ~text-base (16px) */
+    line-height: 1.2rem; /* ~leading-relaxed (24px) */
+    font-weight: 400;
   }
   a {
-    @apply text-sm leading-relaxed;
+    @apply text-base leading-relaxed;
+    font-weight: 600;
   }
   
   /* Small screens (min-width: 640px = sm) */
   @media (min-width: 640px) {
     h1 {
       @apply text-3xl leading-tight; /* sm:text-3xl */
+      font-weight: 700;
     }
     h2 {
       @apply text-2xl leading-snug;
+      font-weight: 700;
     }
     h3 {
       @apply text-xl leading-snug;
+      font-weight: 700;
     }
     h4 {
       @apply text-lg leading-normal;
+      font-weight: 700;
     }
     h5 {
       @apply text-base leading-normal;
+      font-weight: 600;
     }
     h6 {
       @apply text-base leading-normal;
+      font-weight: 600;
     }
     p {
       @apply text-base leading-relaxed;
+      font-weight: 400;
     }
     a {
       @apply text-base leading-relaxed;
+      font-weight: 600;
     }
   }
   
