@@ -1,6 +1,7 @@
 import AboutUsSection from "@/components/home/AboutUsSection";
 import HelpfulCardsSection from "@/components/home/HelpfulCardsSelection";
 import HeroSection from "@/components/home/HeroSection";
+import ProjectSection from "@/components/home/ProjectSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroSection />
       <HelpfulCardsSection />
       <AboutUsSection />
+      <ProjectSection />
     </div>
   );
 }
