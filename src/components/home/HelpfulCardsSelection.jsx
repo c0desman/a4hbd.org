@@ -48,7 +48,7 @@ const HelpfulCardsSection = () => {
   };
 
   return (
-    <section className="py-28 lg:py-20 xs:py-12">
+    <section className="py-20 lg:py-20 xs:py-12">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((card, index) => {

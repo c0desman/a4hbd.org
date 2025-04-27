@@ -27,15 +27,7 @@ const HeroSection = () => {
               className="max-w-[780px] text-white/80 mb-6 md:mb-8 animate-fadeInUp leading-4 justify"
               style={{ animationDelay: '0.2s' }}
             >
-              We stand for a world where no one is left
-              behind. With faith and compassion, we
-              empower orphans, widows, refugees and
-              vulnerable communities through education,
-              healthcare, water, food relief and livelihood support.
-              Our mission is simple: Serve with integrity, uplift with
-              compassion and create lasting change. Every project reflects
-              the generosity of our supporters and the resilience of those
-              we help.
+              Driven by faith and compassion, we empower vulnerable communities—orphans, widows, refugees—through sustainable initiatives in education, healthcare, water, food security, and livelihoods, ensuring integrity, dignity, and lasting development for all.
             </p>
             <div className="flex gap-4 flex-wrap">
               <a

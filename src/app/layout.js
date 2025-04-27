@@ -9,11 +9,11 @@ const inter = Inter({
   weight: ['400', '500']
 });
 
-const openSans = Open_Sans({ 
-  subsets: ['latin'],
-  variable: '--font-open-sans',
-  weight: ['400', '600', '700']
-});
+// const openSans = Open_Sans({ 
+//   subsets: ['latin'],
+//   variable: '--font-open-sans',
+//   weight: ['400', '600', '700']
+// });
 
 export const metadata = {
   title: "Aid For Humanity",
@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
         <meta name="og:description" content={metadata.description} />
         <meta name="og:image" alt={metadata.image.alt} content={metadata.image.src} />
       </head>
-      <body className={`${inter.className} ${openSans.className}`}>
+      <body className={`${inter.variable} font-sans`}>
         <Navbar />
         {children}
         <Footer />
