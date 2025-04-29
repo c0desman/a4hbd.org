@@ -2,73 +2,102 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Autoplay } from 'swiper/modules';
+
+const slides = [
+  {
+    type: 'image',
+    src: '/images/gallery/moque-banner.JPG',
+    name: 'Mosque Project',
+    href: '/projects/mosque',
+  },
+  {
+    type: 'image',
+    src: '/images/gallery/ablution-banner.JPG',
+    name: 'Ablution Centers',
+    href: '/projects/ablution',
+  },
+  {
+    type: 'image',
+    src: '/images/gallery/tubewell-banner.JPG',
+    name: 'Tubewell Project',
+    href: '/projects/tubewell',
+  },
+  {
+    type: 'image',
+    src: '/images/gallery/orphan-sponsoring.JPG',
+    name: 'Orphan Sponsoring',
+    href: '/projects/orphan',
+  },
+  {
+    type: 'image',
+    src: '/images/gallery/qurbani-banner.png',
+    name: 'Qurbani Project',
+    href: '/projects/qurbani',
+  },
+  {
+    type: 'image',
+    src: '/images/gallery/zakat-banner.jpg',
+    name: 'Zakaat Al Maal',
+    href: '/projects/zakat',
+  },
+];
 
 const ProjectSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const slides = [
-    { type: 'image', src: '/images/gallery/about3.png' },
-    { type: 'image', src: '/images/gallery/about3.png' },
-    { type: 'image', src: '/images/gallery/about3.png' },
-    { type: 'image', src: '/images/gallery/about3.png' },
-    { type: 'image', src: '/images/gallery/about3.png' },
-  ];
-
-  const handleActivate = (index) => {
-    setActiveIndex(index);
-  };
-
   return (
-    <section className="w-full px-6 py-16">
-      {/* Top section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center max-w-7xl mx-auto mb-12">
-        
-        {/* Left Title */}
-        <div className="md:w-1/2 mb-8 md:mb-0">
-          <p className="text-sm uppercase tracking-widest text-gray-600 mb-2">
-            Our Projects
-          </p>
+    <section className="w-full px-6 py-16 bg-white">
+      {/* Top Section */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center max-w-7xl mx-auto mb-2 md:mb-8 lg:mb-12">
+        <div className="md:w-1/2 mb-2 md:mb-0">
+          <span className="uppercase font-bold text-primary inline-block">
+            Our Top Projects
+          </span>
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             Since 2017 —<br /> we are changing lives
           </h2>
         </div>
-
-        {/* Right Description */}
-        <div className="md:w-1/2 flex flex-col gap-4">
-          <p className="text-gray-600 text-base md:text-lg">
-          We are working on various social indicators to improve the people’s
-            life in Bangladesh. Our activities are orphan sponosring, orphanage
-            construciton and maintainance, constructing and sponsoring
-            educational and religious institutions, installation of tube well and
-            toilets etc.
+        <div className="md:w-1/2 flex flex-col gap-4 hidden xl:block">
+          <p className="text-gray-600 text-base">
+            We are working on various social indicators to improve people’s
+            lives in Bangladesh, including orphan sponsorship, tube wells,
+            toilets, and institutions.
           </p>
-          <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-full transition-all">
-            Read more →
-          </button>
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link
+              href="/about"
+              className="inline-block py-3 px-8 mt-4 rounded-lg text-white bg-primary font-bold border border-primary hover:bg-indigo-700 hover:text-primary transition"
+            >
+              Our Projects
+            </Link>
+          </motion.div>
         </div>
-
       </div>
 
-      {/* Bottom slides */}
-      <div className="flex gap-4 overflow-hidden max-w-7xl mx-auto">
+      {/* Desktop Slides */}
+      <div className="hidden md:flex gap-4 overflow-hidden max-w-7xl mx-auto">
         {slides.map((slide, index) => (
           <motion.div
             key={index}
             layout
-            transition={{ layout: { duration: 0.6, ease: 'easeInOut' } }}
-            onMouseEnter={() => handleActivate(index)}
-            onClick={() => handleActivate(index)}
-            className="relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 bg-gray-300"
+            transition={{ layout: { duration: 0.2, ease: 'easeInOut' } }}
+            onMouseEnter={() => setActiveIndex(index)}
+            onClick={() => window.location.href = slide.href}
+            className="relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 bg-gray-300 group"
             style={{
-              width: activeIndex === index ? '50%' : '10%',
+              width: activeIndex === index ? '50%' : '8.33%',
               height: '400px',
             }}
           >
-            {/* Content inside */}
             {slide.type === 'image' ? (
               <img
                 src={slide.src}
-                alt={`Slide ${index + 1}`}
+                alt={slide.name}
                 className="object-cover w-full h-full"
               />
             ) : (
@@ -80,10 +109,59 @@ const ProjectSection = () => {
                 className="object-cover w-full h-full"
               />
             )}
+
+            {/* Project Name Overlay */}
+            {activeIndex === index && (
+              <div className="absolute bottom-0 w-full bg-[#0b98d5]/80 text-white text-center py-2 font-bold text-4xl">
+                {slide.name}
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
 
+      {/* Mobile Swiper */}
+      <div className="md:hidden mt-5">
+        <Swiper
+          modules={[Autoplay]}
+          autoplay={{ delay: 2000 }}
+          loop
+          spaceBetween={20}
+          slidesPerView={1}
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <Link href={slide.href} className="block">
+                <div className="rounded-2xl overflow-hidden h-72 relative">
+                  <img
+                    src={slide.src}
+                    alt={slide.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-0 w-full bg-[#0b98d5]/80 text-white text-center py-2 font-bold text-lg">
+                    {slide.name}
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <div className="md:hidden flex flex-col gap-4 mt-6">
+        <p className="text-gray-600 text-base">
+          We are working on various social indicators to improve people’s
+          lives in Bangladesh, including orphan sponsorship, tube wells,
+          toilets, and institutions.
+        </p>
+        <motion.div whileHover={{ scale: 1.05 }}>
+          <Link
+            href="/about"
+            className="inline-block py-3 px-8 rounded-lg text-white bg-primary font-bold border border-primary hover:bg-indigo-700 hover:text-primary transition"
+          >
+            Our Projects
+          </Link>
+        </motion.div>
+      </div>
     </section>
   );
 };
