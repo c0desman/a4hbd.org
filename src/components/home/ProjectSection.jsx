@@ -59,7 +59,7 @@ const ProjectSection = () => {
             Our Top Projects
           </span>
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-            Since 2017 —<br /> we are changing lives
+            <span className='text-gradient'>Since 2017 —</span><br /> we are changing lives
           </h2>
         </div>
         <div className="md:w-1/2 flex flex-col gap-4 hidden xl:block">

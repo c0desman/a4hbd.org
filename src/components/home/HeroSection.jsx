@@ -21,7 +21,7 @@ const HeroSection = () => {
               className="text-white mb-2 md:mb-3 font-bold animate-fadeInUp"
               style={{ animationDelay: '0.1s' }}
             >
-              Empowering Lives<br />Transforming Futures
+              Empowering Lives<br /><span className='text-gradient'>Transforming Futures</span>
             </h1>
             <p
               className="max-w-[780px] text-white/80 mb-6 md:mb-8 animate-fadeInUp leading-4 justify"

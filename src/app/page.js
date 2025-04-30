@@ -3,7 +3,7 @@ import HelpfulCardsSection from "@/components/home/HelpfulCardsSelection";
 import HeroSection from "@/components/home/HeroSection";
 import ProjectSection from "@/components/home/ProjectSection";
 import AchievementSection from "@/components/home/AchievementSection";
-import Image from "next/image";
+import CTACollaboration from "@/components/home/CTAcollaboration";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       <AboutUsSection />
       <AchievementSection />
       <ProjectSection />
+      <CTACollaboration />
     </div>
   );
 }

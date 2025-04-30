@@ -25,7 +25,7 @@ const AboutUsSection = () => {
                   About Us
                 </span>
                 <h2 className="font-bold mb-2">
-                  Hand in Hand, We Light the Way
+                  Hand in Hand, <span className='text-gradient'>We Light the Way</span>
                 </h2>
                 <p className="mb-3 text-gray-600">
                   Every hand we hold, every life we touch, brings us closer to a world filled with hope. 
@@ -87,7 +87,6 @@ const AboutUsSection = () => {
           {/* Image and Video Button */}
           <div className="relative w-full h-full">
             <motion.div
-              whileHover={{ scale: 1.02 }}
               className="relative w-full overflow-hidden rounded-lg"
             >
               <Image
