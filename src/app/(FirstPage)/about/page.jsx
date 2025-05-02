@@ -1,7 +1,7 @@
 import AboutPage from "@/components/about/AboutPage";
 import MissionVisionSection from "@/components/about/MissionVisionSection";
 import TimelineSection from "@/components/about/TimelineSection";
-import CTACollaboration from "@/components/reusable/CTAcollaboration";
+import CTACollaboration from "@/components/reusable/CTACollaboration";
 
 
 export default function About() {

@@ -3,7 +3,7 @@ import HelpfulCardsSection from "@/components/home/HelpfulCardsSelection";
 import HeroSection from "@/components/home/HeroSection";
 import ProjectSection from "@/components/home/ProjectSection";
 import AchievementSection from "@/components/home/AchievementSection";
-import CTACollaboration from "@/components/reusable/CTAcollaboration";
+import CTACollaboration from "@/components/reusable/CTACollaboration";
 
 export default function Home() {
   return (

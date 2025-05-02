@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import CTACollaboration from '@/components/reusable/CTAcollaboration';
+import CTACollaboration from '@/components/reusable/CTACollaboration';
 
 // ... (keep all the constant declarations same as original)
 // 15 Sample blog posts
@@ -16,7 +16,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['School Access', 'Teacher Training'],
       date: 'April 15, 2025',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Local Farming', 'Sustainability'],
       date: 'March 28, 2025',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Mobile Clinics', 'Free Checkups'],
       date: 'March 10, 2025',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Nutrition Programs', 'Child Care'],
       date: 'Feb 12, 2025',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 5,
@@ -52,7 +52,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Tree Planting', 'Awareness'],
       date: 'Jan 20, 2025',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 6,
@@ -61,7 +61,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Scholarships', 'Girl Empowerment'],
       date: 'Jan 5, 2025',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 7,
@@ -70,7 +70,7 @@ const projects = [
       image: '/images/blog/healthcare.jpg',
       initiatives: ['Mobile Clinics', 'Rural Access'],
       date: 'Dec 25, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 8,
@@ -79,7 +79,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Organic Training', 'Sustainability'],
       date: 'Dec 10, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 9,
@@ -88,7 +88,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Tech in Schools', 'Training'],
       date: 'Nov 18, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 10,
@@ -97,7 +97,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Rapid Response', 'Medical Camps'],
       date: 'Nov 1, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 11,
@@ -106,7 +106,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Eco Learning', 'Gardening'],
       date: 'Oct 10, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 12,
@@ -115,7 +115,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Seed Saving', 'Biodiversity'],
       date: 'Oct 1, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 13,
@@ -124,7 +124,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Water Purifiers', 'Well Projects'],
       date: 'Sep 12, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 14,
@@ -133,7 +133,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Book Donation', 'Access to Education'],
       date: 'Aug 21, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
     {
       id: 15,
@@ -142,7 +142,7 @@ const projects = [
       image: '/images/gallery/qurbani-banner.png',
       initiatives: ['Women Empowerment', 'Training'],
       date: 'Aug 5, 2024',
-      slug: 'stories/single-story',
+      slug: 'projects/project-single',
     },
   ];
   

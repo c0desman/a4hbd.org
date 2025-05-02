@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const CTACollaboration = () => {
+ const CTACollaboration = () => {
   return (
     <section className="bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 text-white py-14">
       <div className="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row md:items-center gap-10">
