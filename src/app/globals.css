@@ -112,71 +112,71 @@ h6 {
 
 /* default font size */
 h1 {
-    @apply text-4xl leading-tight; /* ~text-2xl (24px), tight line height */
+    @apply text-4xl; /* ~text-2xl (24px), tight line height */
     font-weight: 700;
   }
   h2 {
-    @apply text-2xl leading-snug;
+    @apply text-2xl;
     font-weight: 700;
   }
   h3 {
-    @apply text-xl leading-snug;
+    @apply text-xl;
     font-weight: 700;
   }
   h4 {
-    @apply text-lg leading-normal;
+    @apply text-lg;
     font-weight: 700;
   }
   h5 {
-    @apply text-lg leading-normal;
+    @apply text-lg;
     font-weight: 600;
   }
   h6 {
-    @apply text-base leading-normal;
+    @apply text-base;
     font-weight: 600;
   }
   p {
-    font-size: 1rem; /* ~text-base (16px) */
+    font-size: 14px; /* ~text-base (16px) */
     line-height: 1.2rem; /* ~leading-relaxed (24px) */
     font-weight: 400;
   }
   a {
-    @apply text-base leading-relaxed;
+    @apply text-base;
     font-weight: 600;
   }
   
   /* Small screens (min-width: 640px = sm) */
   @media (min-width: 640px) {
     h1 {
-      @apply text-3xl leading-tight; /* sm:text-3xl */
+      @apply text-3xl; /* sm:text-3xl */
       font-weight: 700;
     }
     h2 {
-      @apply text-2xl leading-snug;
+      @apply text-2xl;
       font-weight: 700;
     }
     h3 {
-      @apply text-xl leading-snug;
+      @apply text-xl;
       font-weight: 700;
     }
     h4 {
-      @apply text-lg leading-normal;
+      @apply text-lg;
       font-weight: 700;
     }
     h5 {
-      @apply text-base leading-normal;
+      @apply text-base;
       font-weight: 600;
     }
     h6 {
-      @apply text-base leading-normal;
+      @apply text-base;
       font-weight: 600;
     }
     p {
-      @apply text-base leading-relaxed;
+      @apply text-base;
       font-weight: 400;
     }
     a {
-      @apply text-base leading-relaxed;
+      @apply text-base;
       font-weight: 600;
     }
   }
@@ -184,137 +184,137 @@ h1 {
   /* Medium screens (min-width: 768px = md) */
   @media (min-width: 768px) {
     h1 {
-      @apply text-4xl leading-tight; /* md:text-3xl */
+      @apply text-4xl; /* md:text-3xl */
     }
     h2 {
-      @apply text-2xl leading-snug;
+      @apply text-2xl;
     }
     h3 {
-      @apply text-xl leading-snug;
+      @apply text-xl;
     }
     h4 {
-      @apply text-lg leading-normal;
+      @apply text-lg;
     }
     h5 {
-      @apply text-base leading-normal;
+      @apply text-base;
     }
     h6 {
-      @apply text-base leading-normal;
+      @apply text-base;
     }
     p {
-      @apply text-lg leading-relaxed;
+      @apply text-sm;
     }
     a {
-      @apply text-lg leading-relaxed;
+      @apply text-lg;
     }
   }
   
   /* Large screens (min-width: 1024px = lg) */
   @media (min-width: 1024px) {
     h1 {
-      @apply text-5xl leading-tight; /* lg:text-4xl (36px) */
+      @apply text-5xl; /* lg:text-4xl (36px) */
     }
     h2 {
-      @apply text-3xl leading-snug;
+      @apply text-3xl;
     }
     h3 {
-      @apply text-2xl leading-snug;
+      @apply text-2xl;
     }
     h4 {
-      @apply text-xl leading-normal;
+      @apply text-xl;
     }
     h5 {
-      @apply text-lg leading-normal;
+      @apply text-lg;
     }
     h6 {
-      @apply text-base leading-normal;
+      @apply text-base;
     }
     p {
-      @apply text-lg leading-relaxed;
+      @apply text-sm;
     }
     a {
-      @apply text-lg leading-relaxed;
+      @apply text-lg ;
     }
   }
     /* Extra large screens (min-width: 1280px = xl) */
     @media (min-width: 1280px) {
         h1 {
-            @apply text-5xl leading-tight; /* xl:text-4xl */
+            @apply text-5xl; /* xl:text-4xl */
         }
         h2 {
-            @apply text-3xl leading-snug;
+            @apply text-3xl;
         }
         h3 {
-            @apply text-2xl leading-snug;
+            @apply text-2xl;
         }
         h4 {
-            @apply text-xl leading-normal;
+            @apply text-xl;
         }
         h5 {
-            @apply text-lg leading-normal;
+            @apply text-lg;
         }
         h6 {
-            @apply text-base leading-normal;
+            @apply text-base;
         }
         p {
-            @apply text-lg leading-relaxed;
+            @apply text-lg;
         }
         a {
-            @apply text-lg leading-relaxed;
+            @apply text-lg;
         }
         }
         /* 2xl screens (min-width: 1536px = 2xl) */
         @media (min-width: 1536px) {
             h1 {
-                @apply text-6xl leading-tight; /* 2xl:text-5xl */
+                @apply text-6xl; /* 2xl:text-5xl */
             }
             h2 {
-                @apply text-4xl leading-snug;
+                @apply text-4xl;
             }
             h3 {
-                @apply text-3xl leading-snug;
+                @apply text-3xl;
             }
             h4 {
-                @apply text-2xl leading-normal;
+                @apply text-2xl;
             }
             h5 {
-                @apply text-xl leading-normal;
+                @apply text-xl;
             }
             h6 {
-                @apply text-lg leading-normal;
+                @apply text-lg;
             }
             p {
-                @apply text-lg leading-relaxed;
+                @apply text-lg;
             }
             a {
-                @apply text-lg leading-relaxed;
+                @apply text-lg;
             }
         }
         /* 3xl screens (min-width: 1920px = 3xl) */
         @media (min-width: 1920px) {
             h1 {
-                @apply text-6xl leading-tight; /* 3xl:text-6xl */
+                @apply text-5xl; /* 3xl:text-6xl */
             }
             h2 {
-                @apply text-5xl leading-snug;
+                @apply text-4xl;
             }
             h3 {
-                @apply text-4xl leading-snug;
+                @apply text-3xl;
             }
             h4 {
-                @apply text-3xl leading-normal;
+                @apply text-2xl;
             }
             h5 {
-                @apply text-2xl leading-normal;
+                @apply text-2xl;
             }
             h6 {
-                @apply text-xl leading-normal;
+                @apply text-xl;
             }
             p {
-                @apply text-lg leading-relaxed;
+                @apply text-lg ;
             }
             a {
-                @apply text-lg leading-relaxed;
+                @apply text-lg;
             }
         }
         /* 4xl screens (min-width: 2560px = 4xl) */
@@ -336,33 +336,6 @@ h1 {
             }
             h6 {
                 @apply text-2xl leading-normal;
-            }
-            p {
-                @apply text-lg leading-relaxed;
-            }
-            a {
-                @apply text-lg leading-relaxed;
-            }
-        }
-        /* 5xl screens (min-width: 3840px = 5xl) */
-        @media (min-width: 3840px) {
-            h1 {
-                @apply text-8xl leading-tight; /* 5xl:text-8xl */
-            }
-            h2 {
-                @apply text-7xl leading-snug;
-            }
-            h3 {
-                @apply text-6xl leading-snug;
-            }
-            h4 {
-                @apply text-5xl leading-normal;
-            }
-            h5 {
-                @apply text-4xl leading-normal;
-            }
-            h6 {
-                @apply text-3xl leading-normal;
             }
             p {
                 @apply text-lg leading-relaxed;

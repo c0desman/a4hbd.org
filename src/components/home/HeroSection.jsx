@@ -12,7 +12,7 @@ const HeroSection = () => {
           {/* Text Section */}
           <div className="max-w-[615px] my-5">
             <p
-              className="text-secondary font-bold mb-2 md:mb-3 animate-fadeInUp"
+              className="text-secondary text-base font-bold mb-2 md:mb-3 animate-fadeInUp"
               style={{ animationDelay: '0.0s' }}
             >
               #HOPE #HELP #HUMANITY
@@ -21,10 +21,10 @@ const HeroSection = () => {
               className="text-white mb-2 md:mb-3 font-bold animate-fadeInUp"
               style={{ animationDelay: '0.1s' }}
             >
-              Empowering Lives<br /><span className='text-gradient'>Transforming Futures</span>
+              Empowering Lives<br /><span className='live-gradient'>Transforming Futures</span>
             </h1>
             <p
-              className="max-w-[780px] text-white/80 mb-6 md:mb-8 animate-fadeInUp leading-4 justify"
+              className="max-w-[780px] text-white/80 mb-6 md:mb-8 animate-fadeInUp justify leading-6"
               style={{ animationDelay: '0.2s' }}
             >
               Driven by faith and compassion, we empower vulnerable communities—orphans, widows, refugees—through sustainable initiatives in education, healthcare, water, food security, and livelihoods, ensuring integrity, dignity, and lasting development for all.

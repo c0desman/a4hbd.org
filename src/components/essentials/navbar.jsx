@@ -34,7 +34,7 @@ const navItems = [
       { name: 'Building Madrasah', path: '/projects/completed' },
     ],
   },
-  { id: 4, name: 'Our Stories', path: '/news' },
+  { id: 4, name: 'Our Stories', path: '/stories' },
   { id: 5, name: 'Contact Us', path: '/contact' },
 ];
 

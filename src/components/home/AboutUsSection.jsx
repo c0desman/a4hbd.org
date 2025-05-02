@@ -24,7 +24,7 @@ const AboutUsSection = () => {
                 <span className="uppercase font-bold text-primary inline-block">
                   About Us
                 </span>
-                <h2 className="font-bold mb-2">
+                <h2 className="font-bold mb-6">
                   Hand in Hand, <span className='text-gradient'>We Light the Way</span>
                 </h2>
                 <p className="mb-3 text-gray-600">
