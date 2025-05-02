@@ -10,14 +10,14 @@ import { Autoplay } from 'swiper/modules';
 
 const slides = [
   {
-    type: 'image',
-    src: '/images/gallery/moque-banner.JPG',
+    type: 'video',
+    src: '/videos/slides/Community-impact.mp4',
     name: 'Mosque Project',
     href: '/projects/mosque',
   },
   {
-    type: 'image',
-    src: '/images/gallery/ablution-banner.JPG',
+    type: 'video',
+    src: '/videos/slides/orphan-support.mp4',
     name: 'Ablution Centers',
     href: '/projects/ablution',
   },
@@ -133,11 +133,22 @@ const ProjectSection = () => {
             <SwiperSlide key={index}>
               <Link href={slide.href} className="block">
                 <div className="rounded-2xl overflow-hidden h-72 relative">
-                  <img
-                    src={slide.src}
-                    alt={slide.name}
-                    className="w-full h-full object-cover"
-                  />
+                  {slide.type === 'image' ? (
+                    <img
+                      src={slide.src}
+                      alt={slide.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <video
+                      src={slide.src}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute bottom-0 w-full bg-[#0b98d5]/80 text-white text-center py-2 font-bold text-lg">
                     {slide.name}
                   </div>

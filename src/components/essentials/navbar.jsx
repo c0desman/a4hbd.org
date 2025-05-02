@@ -7,7 +7,16 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 
 const navItems = [
   { id: 1, name: 'Home', path: '/' },
-  { id: 2, name: 'About Us', path: '/about' },
+  { id: 2, 
+    name: 'About Us', 
+    path: '/about',
+    submenu: [
+      { name: 'Message of Chariman', path: '/about/chairman-message' },
+      { name: 'Message of Advisor', path: '/about/advisor-message' },
+      { name: 'How We Work', path: '/about/how-we-work' },
+      { name: 'Our Partners', path: '/about/partners' },
+    ],
+  },
   {
     id: 3,
     name: 'Our Works',

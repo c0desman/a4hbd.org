@@ -89,12 +89,30 @@ h6 {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .live-gradient {
+      background: linear-gradient(to left, #f59e0b, #ef4444, #ec4899);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 1s linear infinite;
+    }
+    
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
 }
 
 
 /* default font size */
 h1 {
-    @apply text-3xl leading-tight; /* ~text-2xl (24px), tight line height */
+    @apply text-4xl leading-tight; /* ~text-2xl (24px), tight line height */
     font-weight: 700;
   }
   h2 {
@@ -166,7 +184,7 @@ h1 {
   /* Medium screens (min-width: 768px = md) */
   @media (min-width: 768px) {
     h1 {
-      @apply text-3xl leading-tight; /* md:text-3xl */
+      @apply text-4xl leading-tight; /* md:text-3xl */
     }
     h2 {
       @apply text-2xl leading-snug;
@@ -194,7 +212,7 @@ h1 {
   /* Large screens (min-width: 1024px = lg) */
   @media (min-width: 1024px) {
     h1 {
-      @apply text-4xl leading-tight; /* lg:text-4xl (36px) */
+      @apply text-5xl leading-tight; /* lg:text-4xl (36px) */
     }
     h2 {
       @apply text-3xl leading-snug;
@@ -221,7 +239,7 @@ h1 {
     /* Extra large screens (min-width: 1280px = xl) */
     @media (min-width: 1280px) {
         h1 {
-            @apply text-4xl leading-tight; /* xl:text-4xl */
+            @apply text-5xl leading-tight; /* xl:text-4xl */
         }
         h2 {
             @apply text-3xl leading-snug;
@@ -248,7 +266,7 @@ h1 {
         /* 2xl screens (min-width: 1536px = 2xl) */
         @media (min-width: 1536px) {
             h1 {
-                @apply text-5xl leading-tight; /* 2xl:text-5xl */
+                @apply text-6xl leading-tight; /* 2xl:text-5xl */
             }
             h2 {
                 @apply text-4xl leading-snug;
