@@ -245,7 +245,7 @@ export default function HowWeWork() {
                 Lets Join Hands
             </h2>
             <p className="mb-6 mx-auto md:mx-0 text-justify">
-            Together, we can bring meaningful change to those who need it most. Whether you're a generous donor, an inspiring partner, or a compassionate supporter— your involvement fuels our mission. Let’s build hope, dignity, and a brighter future, side by side.
+            Together, we can bring meaningful change to those who need it most. Whether you&apos;re a generous donor, an inspiring partner, or a compassionate supporter— your involvement fuels our mission. Let’s build hope, dignity, and a brighter future, side by side.
             </p>
           </div>
           
