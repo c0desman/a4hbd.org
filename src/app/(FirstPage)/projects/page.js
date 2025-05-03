@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import CTACollaboration from '@/components/reusable/CTACollaboration.';
+import CTACollaboration from "../../../components/reusable/CTACollaboration";
 
 // ... (keep all the constant declarations same as original)
 // 15 Sample blog posts
