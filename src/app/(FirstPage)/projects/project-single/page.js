@@ -9,7 +9,7 @@ import { FaMosque } from 'react-icons/fa';
 import { GiTap } from 'react-icons/gi';
 import { FaHandsHoldingChild } from 'react-icons/fa6';
 import { BiSolidDonateHeart } from 'react-icons/bi';
-import CTACollaboration from "../../../components/reusable/CTACollaboration";
+import CTACollaboration from "@/components/reusable/CTACollaboration";
 
 const achievements = [
   {

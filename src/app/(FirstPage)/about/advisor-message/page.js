@@ -1,5 +1,4 @@
-'use client'
-import CTACollaboration from "../../../components/reusable/CTACollaboration";
+import CTACollaboration from "@/components/reusable/CTACollaboration";
 
 export default function AdvisorMessage() {
     return (

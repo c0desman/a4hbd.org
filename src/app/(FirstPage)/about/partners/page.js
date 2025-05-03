@@ -1,6 +1,6 @@
 "use client";
 
-import CTACollaboration from "../../../components/reusable/CTACollaboration";
+import CTACollaboration from "@/components/reusable/CTACollaboration";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
