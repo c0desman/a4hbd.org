@@ -1,4 +1,4 @@
-import CTACollaboration from "@/components/reusable/CTACollaboration.jsx";
+import CTACollaboration from "@/components/reusable/CTACollaboration";
 
 export default function AdvisorMessage() {
     return (
