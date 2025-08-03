@@ -1,201 +1,114 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import CTACollaboration from '@/components/reusable/CTACollaboration';
-
-// ... (keep all the constant declarations same as original)
-// 15 Sample blog posts
-const blogPosts = [
-    {
-      id: 1,
-      title: 'Empowering Local Communities Through Education',
-      description: 'Supporting education in remote areas.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Education',
-      initiatives: ['School Access', 'Teacher Training'],
-      date: 'April 15, 2025',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 2,
-      title: 'Fighting Hunger with Sustainable Agriculture',
-      description: 'Promoting local farming practices.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Agriculture',
-      initiatives: ['Local Farming', 'Sustainability'],
-      date: 'March 28, 2025',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 3,
-      title: 'Healthcare Access for All',
-      description: 'Basic medical aid to marginalized populations.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Healthcare',
-      initiatives: ['Mobile Clinics', 'Free Checkups'],
-      date: 'March 10, 2025',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 4,
-      title: 'Nutrition for Children in Need',
-      description: 'Our fight against malnutrition.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Healthcare',
-      initiatives: ['Nutrition Programs', 'Child Care'],
-      date: 'Feb 12, 2025',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 5,
-      title: 'Greener Villages Project',
-      description: 'Sustainability through tree planting.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Agriculture',
-      initiatives: ['Tree Planting', 'Awareness'],
-      date: 'Jan 20, 2025',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 6,
-      title: 'Scholarships for Girls',
-      description: 'Breaking barriers with education.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Education',
-      initiatives: ['Scholarships', 'Girl Empowerment'],
-      date: 'Jan 5, 2025',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 7,
-      title: 'Mobile Medical Vans',
-      description: 'Taking healthcare on the road.',
-      image: '/images/blog/healthcare.jpg',
-      category: 'Healthcare',
-      initiatives: ['Mobile Clinics', 'Rural Access'],
-      date: 'Dec 25, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 8,
-      title: 'Organic Farming Revolution',
-      description: 'Helping farmers go organic.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Agriculture',
-      initiatives: ['Organic Training', 'Sustainability'],
-      date: 'Dec 10, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 9,
-      title: 'Bridging the Digital Divide',
-      description: 'Tech access in schools.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Education',
-      initiatives: ['Tech in Schools', 'Training'],
-      date: 'Nov 18, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 10,
-      title: 'Emergency Healthcare Camps',
-      description: 'Quick response medical aid.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Healthcare',
-      initiatives: ['Rapid Response', 'Medical Camps'],
-      date: 'Nov 1, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 11,
-      title: 'Green Schools Movement',
-      description: 'Eco-education initiatives.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Education',
-      initiatives: ['Eco Learning', 'Gardening'],
-      date: 'Oct 10, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 12,
-      title: 'Local Seed Banks',
-      description: 'Preserving traditional seeds.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Agriculture',
-      initiatives: ['Seed Saving', 'Biodiversity'],
-      date: 'Oct 1, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 13,
-      title: 'Village Clean Water Access',
-      description: 'Clean water for every home.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Healthcare',
-      initiatives: ['Water Purifiers', 'Well Projects'],
-      date: 'Sep 12, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 14,
-      title: 'Free Textbooks Drive',
-      description: 'Supplying books to underprivileged kids.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Education',
-      initiatives: ['Book Donation', 'Access to Education'],
-      date: 'Aug 21, 2024',
-      slug: 'stories/single-story',
-    },
-    {
-      id: 15,
-      title: 'Women-Led Farming Groups',
-      description: 'Empowering women farmers.',
-      image: '/images/gallery/qurbani-banner.png',
-      category: 'Agriculture',
-      initiatives: ['Women Empowerment', 'Training'],
-      date: 'Aug 5, 2024',
-      slug: 'stories/single-story',
-    },
-  ];
-  
+import axios from 'axios';
 
 export default function BlogPage() {
   const [categoryFilter, setCategoryFilter] = useState('All');
-  const [initiativeFilter, setInitiativeFilter] = useState('All');
+  const [projectFilter, setProjectFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [isGridView, setIsGridView] = useState(true);
+  const [stories, setStories] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [projectDetails, setProjectDetails] = useState({});
+  const [categoryDetails, setCategoryDetails] = useState({});
 
-  // Add these after the blogPosts array
-const allCategories = ['All Categories', ...new Set(blogPosts.map(p => p.category))];
-const allInitiatives = ['All Initiatives', ...new Set(blogPosts.flatMap(p => p.initiatives))];
+  // Fetch data on component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const [storiesRes, categoriesRes, projectsRes] = await Promise.all([
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/stories`, {
+            params: { page: currentPage, limit: 10 }
+          }),
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/allcatagories`),
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/allprojects`)
+        ]);
 
-// Add category colors map
-const categoryColors = {
-  Education: 'bg-yellow-400 text-yellow-900',
-  Agriculture: 'bg-green-400 text-green-900',
-  Healthcare: 'bg-red-400 text-red-900',
-};
+        const storiesData = storiesRes.data.stories || [];
+        setStories(storiesData);
+        setCategories(categoriesRes.data.data || []);
+        setProjects(projectsRes.data.data || []);
 
-  const filteredPosts = blogPosts.filter(post => {
-    const categoryMatch = categoryFilter === 'All' || post.category === categoryFilter;
-    const initiativeMatch = initiativeFilter === 'All' || post.initiatives.includes(initiativeFilter);
-    return categoryMatch && initiativeMatch;
+        // Fetch details for each unique project and category
+        const projectPromises = storiesData.map(story => 
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${story.projectId}`)
+            .then(res => ({ id: story.projectId, data: res.data?.project || res.data }))
+            .catch(() => ({ id: story.projectId, data: null }))
+        );
+
+        const categoryPromises = storiesData.map(story => 
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/catagory/${story.catagoryId}`)
+            .then(res => ({ id: story.catagoryId, data: res.data?.data || res.data }))
+            .catch(() => ({ id: story.catagoryId, data: null }))
+        );
+
+        const [projectResults, categoryResults] = await Promise.all([
+          Promise.all(projectPromises),
+          Promise.all(categoryPromises)
+        ]);
+
+        const projectMap = {};
+        projectResults.forEach(({ id, data }) => {
+          if (data) projectMap[id] = data;
+        });
+
+        const categoryMap = {};
+        categoryResults.forEach(({ id, data }) => {
+          if (data) categoryMap[id] = data;
+        });
+
+        setProjectDetails(projectMap);
+        setCategoryDetails(categoryMap);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [currentPage]);
+
+  // Prepare filter options
+  const allCategories = ['All', ...categories.map(cat => cat.name)];
+  const allProjects = ['All', ...projects.map(proj => proj.title)];
+
+  // Filter stories based on selected filters
+  const filteredStories = stories.filter(story => {
+    const categoryMatch = categoryFilter === 'All' || 
+      (categoryDetails[story.catagoryId]?.name === categoryFilter);
+    const projectMatch = projectFilter === 'All' || 
+      (projectDetails[story.projectId]?.title === projectFilter);
+    return categoryMatch && projectMatch;
   });
 
-  const POSTS_PER_PAGE = 6; // Number of posts per page
+  const POSTS_PER_PAGE = 10;
+  const totalPages = stories.totalPages || 1;
 
-  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
-  const paginatedPosts = filteredPosts.slice(
-    (currentPage - 1) * POSTS_PER_PAGE,
-    currentPage * POSTS_PER_PAGE
-  );
+  if (isLoading) {
+    return (
+      <main className="text-gray-800 pt-20">
+        <section className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-24 px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Our Updates & Stories</h1>
+        </section>
+        <div className="max-w-screen-xl mx-auto py-20 text-center">
+          Loading stories...
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="text-gray-800 pt-20">
-      {/* Hero Section - Keep same as original */}
+      {/* Hero Section */}
       <section className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-24 px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -209,6 +122,7 @@ const categoryColors = {
           </p>
         </motion.div>
       </section>
+
       {/* Filters Section */}
       <section className="bg-white py-8 px-4 max-w-screen-xl mx-auto mt-15">
         <motion.div
@@ -231,15 +145,15 @@ const categoryColors = {
             </select>
 
             <select
-              value={initiativeFilter}
+              value={projectFilter}
               onChange={(e) => {
-                setInitiativeFilter(e.target.value);
+                setProjectFilter(e.target.value);
                 setCurrentPage(1);
               }}
               className="cursor-pointer px-4 py-2 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              {allInitiatives.map(tag => (
-                <option key={tag} value={tag}>{tag}</option>
+              {allProjects.map(project => (
+                <option key={project} value={project}>{project}</option>
               ))}
             </select>
           </div>
@@ -265,59 +179,88 @@ const categoryColors = {
         </motion.div>
       </section>
 
-      {/* Blog Posts Section */}
+      {/* Stories Section */}
       <section className="py-10 px-4 mb-15 bg-gray-100">
         <motion.div
           layout
           className={`max-w-screen-xl mx-auto ${
             isGridView 
-              ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'
+              ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
               : 'flex flex-col gap-6'
           }`}
         >
-          {paginatedPosts.map((post, index) => (
-            <motion.div
-              key={post.id}
-              layout
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className={`bg-white rounded-xl overflow-hidden border border-gray-300 hover:border-gray-500 transition ${
-                !isGridView ? 'flex flex-col sm:flex-row' : ''
-              }`}
-            >
-              <Link href={`/${post.slug}`} className={`${!isGridView ? 'flex-1 flex' : ''}`}>
-                <div className={`relative ${isGridView ? 'w-full h-48' : 'sm:w-48 sm:h-48 w-full h-40'}`}>
-                  <Image 
-                    src={post.image} 
-                    alt={post.title} 
-                    fill 
-                    className="object-cover"
-                  />
-                </div>
-                <div className={`p-4 space-y-2 ${!isGridView ? 'flex-1' : ''}`}>
-                  <div className={`inline-block text-xs font-semibold px-2 py-1 rounded ${categoryColors[post.category] || 'bg-gray-300 text-gray-800'}`}>
-                    {post.category}
+          {filteredStories.map((story) => {
+            const project = projectDetails[story.projectId];
+            const category = categoryDetails[story.catagoryId];
+            
+            return (
+              <motion.div
+                key={story.id}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
+              >
+                <Link href={`/stories/${story.id}`} className="block h-full">
+                  {/* 1. Photo */}
+                  <div className="relative w-full h-48">
+                    {story.imagepath && (
+                      <Image 
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${story.imagepath.replace(/\\/g, "/")}`}
+                        alt={story.title} 
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    )}
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 hover:text-blue-600 transition">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">{post.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {post.initiatives.map((tag, i) => (
-                      <span key={i} className="text-xs bg-blue-100 text-blue-800 font-medium px-2 py-0.5 rounded">
-                        {tag}
+
+                  {/* Card Content */}
+                  <div className="p-4 space-y-3">
+                    {/* 2. Project name tag */}
+                    {project?.title && (
+                      <span className="inline-block text-xs bg-blue-600 text-white font-medium px-2 py-1 rounded-full">
+                        {project.title}
                       </span>
-                    ))}
+                    )}
+
+                    {/* 3. Title of the story */}
+                    <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
+                      {story.title}
+                    </h3>
+
+                    {/* 4. 1 line of description */}
+                    <p className="text-sm text-gray-600 line-clamp-1">
+                      {story.content.replace(/<[^>]*>?/gm, '').substring(0, 100)}...
+                    </p>
+
+                    {/* Bottom section */}
+                    <div className="flex justify-between items-center pt-2">
+                      {/* 5. Category tag */}
+                      {category?.name && (
+                        <span className="text-xs font-medium px-2 py-1 rounded-full bg-purple-100 text-purple-800">
+                          {category.name}
+                        </span>
+                      )}
+
+                      {/* 6. Publish Date (using updatedAt) */}
+                      <span className="text-xs text-gray-500">
+                        {new Date(story.updatedAt).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        })}
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-500 mt-2">{post.date}</div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
-        {/* Pagination - Keep same as original */}
+        {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-10 px-4 flex justify-center items-center gap-4">
             <button
