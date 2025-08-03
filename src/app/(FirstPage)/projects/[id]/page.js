@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import CountUp from 'react-countup';
@@ -416,26 +417,31 @@ export default function ProjectSingle({ params }) {
             <h2 className="text-2xl font-bold text-center mb-6">Project Types</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {project.projecttypes.map((type) => (
-                <motion.div
+                <Link 
+                  href={`/projecttype/${type.id}`} 
                   key={type.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-md p-4 cursor-pointer hover:shadow-lg transition-transform transform hover:scale-105"
+                  passHref
                 >
-                  {type.seo?.imagepath && (
-                    renderImage(
-                      type.seo.imagepath,
-                      type.title,
-                      "rounded-lg mb-4 w-full aspect-video object-cover",
-                      400,
-                      300
-                    )
-                  )}
-                  <h3 className="text-xl font-semibold mb-2">{type.title}</h3>
-                  <p>{type.shortdescription}</p>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="bg-white rounded-xl shadow-md p-4 cursor-pointer hover:shadow-lg transition-transform transform hover:scale-105"
+                  >
+                    {type.seo?.imagepath && (
+                      renderImage(
+                        type.seo.imagepath,
+                        type.title,
+                        "rounded-lg mb-4 w-full aspect-video object-cover",
+                        400,
+                        300
+                      )
+                    )}
+                    <h3 className="text-xl font-semibold mb-2">{type.title}</h3>
+                    <p>{type.shortdescription}</p>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>
