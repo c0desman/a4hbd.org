@@ -24,7 +24,7 @@ const nextConfig = {
       // Add other patterns if needed for production
       {
         protocol: 'https',
-        hostname: 'your-production-domain.com',
+        hostname: 'api.a4hbd.org',
         port: '',
         pathname: '/uploads/**',
       },
