@@ -61,8 +61,8 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-2">
                     <FiPhone className="text-white" />
-                    <Link href="tel:0123456789" className="hover:underline">
-                    0123456789
+                    <Link href="tel:+8801711709870" className="hover:underline">
+                    +880 1711-709870
                     </Link>
                 </div>
             </div>

@@ -23,21 +23,21 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-6 text-white">Services</h4>
+            <h4 className="text-sm font-medium mb-6 text-white">Our Projects</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-400 hover:text-white text-sm">Web Development</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white text-sm">Mobile App Development</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white text-sm">UI/UX Design</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white text-sm">Digital Marketing</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white text-sm">Water and Sentiation Project</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white text-sm">Mosque Project</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white text-sm">Orphan Sponsorig</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white text-sm">Winter Care</a></li>
             </ul>
           </div>
 
           <div className="space-y-4">
             <h4 className="text-sm font-medium mb-6 text-white">Contact Us</h4>
-            <p className="text-gray-400 text-sm">123 Main Street</p>
-            <p className="text-gray-400 text-sm">City, State, Country</p>
-            <p className="text-gray-400 text-sm">contact@example.com</p>
-            <p className="text-gray-400 text-sm">+1 234 567 890</p>
+            <p className="text-gray-400 text-sm">Road 2/B, Sector #4, Uttara</p>
+            <p className="text-gray-400 text-sm">Dhaka, Bangladesh</p>
+            <p className="text-gray-400 text-sm">chairman@a4hbd.org</p>
+            <p className="text-gray-400 text-sm">+8801711709870</p>
           </div>
         </div>
 
