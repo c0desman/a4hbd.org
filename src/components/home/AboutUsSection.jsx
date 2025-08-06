@@ -131,7 +131,7 @@ const AboutUsSection = () => {
               <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
                 <div className="relative w-full max-w-3xl aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/3VzyY0njYPM?autoplay=1"
+                  src="https://www.youtube.com/embed/54a1nHZ2Wec?autoplay=1"
                   title="Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
