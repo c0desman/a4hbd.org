@@ -12,29 +12,29 @@ const achievements = [
   {
     icon: <FaMosque className="text-4xl transition-colors" />,
     title: 'Mosque Built',
-    number: 513,
+    number: 512,
     suffix: '+',
     iconBg: 'bg-red-200',
   },
   {
     icon: <GiTap className="text-4xl transition-colors" />,
     title: 'Water Wells',
-    number: 22600,
+    number: 16300,
     suffix: '+',
     iconBg: 'bg-green-200',
   },
   {
     icon: <FaHandsHoldingChild className="text-4xl transition-colors" />,
     title: 'Orphans Cared',
-    number: 7900,
+    number: 8600,
     suffix: '+',
     iconBg: 'bg-yellow-200',
   },
   {
     icon: <BiSolidDonateHeart className="text-4xl transition-colors" />,
-    title: 'Financial Aid',
-    number: 140000,
-    suffix: '$',
+    title: 'Zakat Al Maal',
+    number: 14200,
+    suffix: '+',
     iconBg: 'bg-blue-200',
   },
   
@@ -104,7 +104,7 @@ const AchievementSection = () => {
           <p className="text-gray-600 text-base mt-4 hidden xl:block">
             We are working on various social indicators to improve people’s
             lives in Bangladesh, including orphan sponsorship, tube wells,
-            toilets, and institutions.
+            toilets and institutions.
           </p>
         </div>
 

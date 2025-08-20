@@ -11,23 +11,23 @@ import AboutCard from './AboutCard'
 
 const sliderData = [
   {
-    type: 'video',
-    src: '/videos/slides/volunteer-in-action.mp4',
+    type: 'image',
+    src: '/images/gallery/volunteer-in-action.jpg',
     footer: 'Volunteer in action',
   },
   {
-    type: 'video',
-    src: '/videos/slides/Community-impact.mp4',
-    footer: 'Community Impact Story',
-  },
-  {
-    type: 'video',
-    src: '/videos/slides/orphan-support.mp4',
-    footer: 'Orphan Support Program',
+    type: 'image',
+    src: '/images/gallery/community-impact.jpg',
+    footer: 'Touching lives and impacting communities',
   },
   {
     type: 'image',
-    src: '/images/gallery/food-pack-project.JPG',
+    src: '/images/gallery/rights-and-security.jpg',
+    footer: 'Shaping a sense of secure future for insecure communities',
+  },
+  {
+    type: 'image',
+    src: '/images/gallery/food-distribution.jpg',
     footer: 'Food Distribution Drive',
   },
 ]
@@ -71,8 +71,8 @@ export default function AboutPage() {
           <span className="live-gradient">vision & initiative</span>
         </h1>
         <p className="mt-6 text-base md:text-lg text-gray-300 max-w-3xl mx-auto font-bold">
-          At Aid For Humanity, we empower vulnerable communities through food,
-          education, and medical aid. Join us in creating lasting change and a
+          Our works are empowering vulnerable communities through food,
+          education and medical aid. Join us in creating lasting change and a
           more compassionate future.
         </p>
       </section>
@@ -156,11 +156,11 @@ export default function AboutPage() {
       <div className="max-w-screen-xl mx-auto px-4 py-16 text-white">
         <h1 className="font-bold mb-8">A4H: At a Glance</h1>
         <p className="text-gray-200 mx-auto text-justify mb-6">
-          Aid For Humanity is a non-profit organization based in Cox’s Bazar,
+          Aid For Humanity is a non-profit organization started from Cox’s Bazar,
           Bangladesh, dedicated to uplifting vulnerable communities through
           compassion and faith. We are registered organization under the NGO Affairs Bearu of Bangladesh. Registration Number is 2217. Our mission is to improve lives, restore
-          dignity, and bring hope to those affected by poverty, displacement,
-          and disaster.
+          dignity and bring hope to those affected by poverty, displacement,
+          and disaster specially the Rohingya community who are living as refugee.
           <br />
           <br />
           We focus on education, healthcare, clean water, orphan care, food

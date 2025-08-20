@@ -10,14 +10,14 @@ import { Autoplay } from 'swiper/modules';
 
 const slides = [
   {
-    type: 'video',
-    src: '/videos/slides/Community-impact.mp4',
+    type: 'image',
+    src: '/images/gallery/mosque-project.jpg',
     name: 'Mosque Project',
     href: '/projects/mosque',
   },
   {
-    type: 'video',
-    src: '/videos/slides/orphan-support.mp4',
+    type: 'image',
+    src: '/images/gallery/ablution-center.jpg',
     name: 'Ablution Centers',
     href: '/projects/ablution',
   },

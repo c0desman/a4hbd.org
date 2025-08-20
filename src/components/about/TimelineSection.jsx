@@ -5,12 +5,12 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 const timelineData = [
   { year: '2018', description: 'We launched platforms, expanded partnerships, and more.' },
   { year: '2019', description: 'Growth in outreach and successful collaborations.' },
-  { year: '2020', description: 'Pandemic support, digital shift, and remote impact delivery.' },
-  { year: '2021', description: 'Reinforced resilience, introduced new services.' },
-  { year: '2022', description: 'Major milestones in team size and services.' },
-  { year: '2023', description: 'Stability, UX improvements, and long-term partnerships.' },
-  { year: '2024', description: 'Scaled globally. Collaborated with key partners.' },
-  { year: '2025', description: 'Innovation, AI, and industry leadership in social impact.' },
+  { year: '2020', description: 'Pandemic support, digital shift and remote impact delivery.' },
+  { year: '2021', description: 'Reinforced resilience, introduced new projects to address the vulnerable familiy and villages.' },
+  { year: '2022', description: 'Established office in Dhaka to enhance co-operation with the international partners.' },
+  { year: '2023', description: 'Launched projects for water crisis, mosques and madrasah in the southern part of Bangladesh in Rangpur, Thakurgaon districts' },
+  { year: '2024', description: 'Expanded our works in Mymensingh, Feni, Chandpur, Kishorgonj districts' },
+  { year: '2025', description: 'Running...' },
 ]
 
 export default function TimelineSection() {

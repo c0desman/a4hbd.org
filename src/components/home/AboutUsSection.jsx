@@ -29,7 +29,7 @@ const AboutUsSection = () => {
                 </h2>
                 <p className="mb-3 text-gray-600">
                   Every hand we hold, every life we touch, brings us closer to a world filled with hope. 
-                  Through support, education, and care, we light the way for those who deserve a chance.
+                  Through support, education and care, we light the way for those who deserve a chance.
                 </p>
               </div>
 
@@ -99,7 +99,7 @@ const AboutUsSection = () => {
 
               {/* Correct Play Button */}
               {/* Correct Play Button with Bounce Animation */}
-              <div className="absolute inset-0 flex items-center ml-17">
+              {/* <div className="absolute inset-0 flex items-center ml-17">
               <motion.button
                 onClick={handleVideoOpen}
                 className="bg-secondary text-white rounded-full p-5 hover:scale-110 transition"
@@ -113,7 +113,6 @@ const AboutUsSection = () => {
                   ease: "easeInOut",
                 }}
               >
-                  {/* Proper Play Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -123,7 +122,7 @@ const AboutUsSection = () => {
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </motion.button>
-              </div>
+              </div> */}
             </motion.div>
 
             {/* Video Modal */}

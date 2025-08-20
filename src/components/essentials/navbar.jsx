@@ -8,11 +8,12 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 const navItems = [
   { id: 1, name: 'Home', path: '/' },
   { id: 2, 
-    name: 'About Us', 
-    path: '/about',
+    name: 'Corporate', 
+    path: '#',
     submenu: [
+      { name: 'About Us', path: '/about' },
       { name: 'Message of Chariman', path: '/about/chairman-message' },
-      { name: 'Message of Advisor', path: '/about/advisor-message' },
+      // { name: 'Message of Advisor', path: '/about/advisor-message' },
       { name: 'How We Work', path: '/about/how-we-work' },
       { name: 'Our Partners', path: '/about/partners' },
     ],
@@ -20,7 +21,7 @@ const navItems = [
   {
     id: 3,
     name: 'Our Works',
-    path: '#',
+    path: '/projects',
     submenu: [
       { name: 'Water Well', path: '/projects/project-single' },
       { name: 'Ablution Centers', path: '/projects/project-single' },
