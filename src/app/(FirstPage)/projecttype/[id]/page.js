@@ -15,6 +15,10 @@ export default function ProjectTypeSingle({ params }) {
   const [currentVideo, setCurrentVideo] = useState(null);
   const router = useRouter();
 
+  const validVideos = projectType.videos?.filter(
+    (video) => video.videourl && video.videourl.toLowerCase() !== 'no'
+  );
+
   useEffect(() => {
     const fetchProjectType = async () => {
       try {

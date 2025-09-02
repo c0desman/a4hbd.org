@@ -221,16 +221,27 @@ export default function ProjectSingle({ params }) {
             className="relative"
           >
             <div className="flex gap-2 mb-2">
-              <button
-                onClick={() => setCurrentMedia('image')}
-                className={`px-3 py-1 rounded transition-colors ${currentMedia === 'image' ? 'bg-white text-blue-500' : 'bg-white/20 text-white'}`}
-              >
-                Image
-              </button>
-              {project.videourl && (
+              {project.imagepath && (
+                <button
+                  onClick={() => setCurrentMedia('image')}
+                  className={`px-3 py-1 rounded transition-colors ${
+                    currentMedia === 'image'
+                      ? 'bg-white text-blue-500'
+                      : 'bg-white/20 text-white'
+                  }`}
+                >
+                  Image
+                </button>
+              )}
+
+              {project.videourl && project.videourl.toLowerCase() !== 'no' && ( // Only show if valid videourl
                 <button
                   onClick={() => setCurrentMedia('video')}
-                  className={`px-3 py-1 rounded transition-colors ${currentMedia === 'video' ? 'bg-white text-blue-500' : 'bg-white/20 text-white'}`}
+                  className={`px-3 py-1 rounded transition-colors ${
+                    currentMedia === 'video'
+                      ? 'bg-white text-blue-500'
+                      : 'bg-white/20 text-white'
+                  }`}
                 >
                   Video
                 </button>
@@ -239,7 +250,7 @@ export default function ProjectSingle({ params }) {
             
             {currentMedia === 'image' && project.imagepath ? (
               renderImage(project.imagepath, project.title, "rounded-xl w-full", 800, 450)
-            ) : project.videourl ? (
+            ) : currentMedia === 'video' && project.videourl && project.videourl.toLowerCase() !== 'no' ? (
               <div className="aspect-video w-full">
                 <iframe
                   src={project.videourl}
