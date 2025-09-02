@@ -55,11 +55,6 @@ const AchievementCard = ({ item }) => {
           <p className="text-black group-hover:text-white font-medium">
             {item.text}
           </p>
-          {/* {item.text && (
-            <p className="text-sm text-black/70 group-hover:text-white/70">
-              {item.text}
-            </p>
-          )} */}
         </div>
       </div>
     </div>
@@ -67,7 +62,6 @@ const AchievementCard = ({ item }) => {
 };
 
 export default function ProjectSingle({ params }) {
-  // Proper params access with destructuring
   const { id } = params;
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -113,6 +107,18 @@ export default function ProjectSingle({ params }) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [popupImgIndex, project?.images]);
 
+  // Show loading state while data is being fetched
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-xl">Loading project...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state if there was an error fetching the project
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -129,6 +135,7 @@ export default function ProjectSingle({ params }) {
     );
   }
 
+  // Show project not found only after loading is complete and no project data
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -234,7 +241,7 @@ export default function ProjectSingle({ params }) {
                 </button>
               )}
 
-              {project.videourl && project.videourl.toLowerCase() !== 'no' && ( // Only show if valid videourl
+              {project.videourl && project.videourl.toLowerCase() !== 'no' && (
                 <button
                   onClick={() => setCurrentMedia('video')}
                   className={`px-3 py-1 rounded transition-colors ${
@@ -404,7 +411,7 @@ export default function ProjectSingle({ params }) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {project.videos.map((video, i) => {
-                if (!video?.videourl) return null; // skip videos with no URL
+                if (!video?.videourl) return null;
                 
                 const isYouTube = video.videourl.includes('youtube.com');
                 const embedUrl = isYouTube ? video.videourl.replace('watch?v=', 'embed/') : video.videourl;
@@ -420,7 +427,6 @@ export default function ProjectSingle({ params }) {
                     viewport={{ once: true }}
                     onClick={() => {
                       setCurrentMedia('video');
-                      // open YouTube or local video in new tab
                       window.open(video.videourl, '_blank');
                     }}
                   >
@@ -455,7 +461,6 @@ export default function ProjectSingle({ params }) {
             <h2 className="text-2xl font-bold text-center mb-6">Project Types</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {project.projecttypes.map((type) => {
-                // Strip HTML tags and truncate to 80 characters
                 const plainDescription = type.shortdescription
                   ? type.shortdescription.replace(/<\/?[^>]+(>|$)/g, "")
                   : "";
