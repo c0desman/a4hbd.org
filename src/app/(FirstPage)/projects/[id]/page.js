@@ -53,13 +53,13 @@ const AchievementCard = ({ item }) => {
             )}
           </strong>
           <p className="text-black group-hover:text-white font-medium">
-            {item.title}
+            {item.text}
           </p>
-          {item.text && (
+          {/* {item.text && (
             <p className="text-sm text-black/70 group-hover:text-white/70">
               {item.text}
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </div>
