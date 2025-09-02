@@ -15,9 +15,10 @@ export default function ProjectTypeSingle({ params }) {
   const [currentVideo, setCurrentVideo] = useState(null);
   const router = useRouter();
 
-  const validVideos = projectType.videos?.filter(
+  // Move this inside the component function but after the projectType check
+  const validVideos = projectType?.videos?.filter(
     (video) => video.videourl && video.videourl.toLowerCase() !== 'no'
-  );
+  ) || [];
 
   useEffect(() => {
     const fetchProjectType = async () => {
@@ -234,12 +235,12 @@ export default function ProjectTypeSingle({ params }) {
       )}
 
       {/* Video Gallery */}
-      {projectType.videos?.length > 0 && (
+      {validVideos.length > 0 && (
         <section className="overflow-x-hidden bg-white py-12">
           <div className="max-w-screen-xl mx-auto px-4">
             <h2 className="text-2xl font-bold text-center mb-6">Video Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {projectType.videos.map((video, i) => (
+              {validVideos.map((video, i) => (
                 <motion.div
                   key={video.id || i}
                   whileHover={{ scale: 1.02 }}
