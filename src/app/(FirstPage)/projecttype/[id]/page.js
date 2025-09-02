@@ -146,7 +146,7 @@ export default function ProjectTypeSingle({ params }) {
       {/* Long Description Section */}
       {projectType.longdescription && (
         <section className="overflow-x-hidden py-12 bg-white">
-          <div className="max-w-screen-xl mx-auto px-4">
+          <div className="text-lg max-w-screen-xl mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}

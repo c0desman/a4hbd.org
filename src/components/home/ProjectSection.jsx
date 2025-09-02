@@ -12,38 +12,38 @@ const slides = [
   {
     type: 'image',
     src: '/images/gallery/mosque-project.jpg',
-    name: 'Mosque Project',
-    href: '/projects/mosque',
+    name: 'Infrustructural Development',
+    href: '/initiative/10',
   },
   {
     type: 'image',
     src: '/images/gallery/ablution-center.jpg',
-    name: 'Ablution Centers',
-    href: '/projects/ablution',
+    name: 'Ablution Centers and Toilets',
+    href: '/projects/3',
   },
   {
     type: 'image',
     src: '/images/gallery/tubewell-banner.JPG',
     name: 'Tubewell Project',
-    href: '/projects/tubewell',
+    href: '/projects/2',
   },
   {
     type: 'image',
     src: '/images/gallery/orphan-sponsoring.JPG',
     name: 'Orphan Sponsoring',
-    href: '/projects/orphan',
+    href: '/initiative/5',
   },
   {
     type: 'image',
     src: '/images/gallery/qurbani-banner.png',
     name: 'Qurbani Project',
-    href: '/projects/qurbani',
+    href: '/projects/12',
   },
   {
     type: 'image',
     src: '/images/gallery/zakat-banner.jpg',
     name: 'Zakaat Al Maal',
-    href: '/projects/zakat',
+    href: '/projects/10',
   },
 ];
 

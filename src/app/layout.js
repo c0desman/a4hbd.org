@@ -1,4 +1,4 @@
-import { Inter, Open_Sans } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/essentials/navbar";
 import Footer from "@/components/essentials/footer";
@@ -9,47 +9,86 @@ const inter = Inter({
   weight: ['400', '500']
 });
 
-// const openSans = Open_Sans({ 
-//   subsets: ['latin'],
-//   variable: '--font-open-sans',
-//   weight: ['400', '600', '700']
-// });
+// Base URL for absolute paths
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://a4hbd.org';
 
 export const metadata = {
-  title: "Aid For Humanity",
-  description: "Together we can make a difference",
-  keywords: "Aid, Humanity, Help, Support, Charity",
-  local: "en-US",
-  type: "website",
-  url: "https://a4hbd.org",
-  favicons: {
-    apple: "/apple-touch-icon.png",
-    android: "/android-chrome-192x192.png",
-    ms: "/mstile-150x150.png",
-    safari: "/safari-pinned-tab.svg",
+  title: "Aid For Humanity - Together we can make a difference",
+  description: "Aid For Humanity is a non-profit organization dedicated to providing support, relief, and development programs in Bangladesh and beyond.",
+  keywords: "Aid, Humanity, Help, Support, Charity, Bangladesh, NGO, Non-Profit, Volunteer, Donate, Community, Relief, Development, Education, Health, Environment, Social Work",
+  metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: '/',
   },
-  image: {
-    src: "/og-image.png",
-    alt: "Og Image",
+  openGraph: {
+    title: "Aid For Humanity - Together we can make a difference",
+    description: "A non-profit organization dedicated to providing support, relief, and development programs in Bangladesh and beyond.",
+    url: baseUrl,
+    siteName: "Aid For Humanity",
+    images: [
+      {
+        url: `${baseUrl}/logo/a4h.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Aid For Humanity - Making a difference together",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aid For Humanity - Together we can make a difference",
+    description: "A non-profit organization dedicated to providing support, relief, and development programs in Bangladesh and beyond.",
+    images: [`${baseUrl}/logo/a4h.jpg`],
+    site: "@AidForHumanity",
+    creator: "@AidForHumanity",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your Google Search Console verification code
+  },
+  icons: {
+    icon: [
+      { url: '/logo/favicon.png' },
+      new URL('/logo/favicon.png', baseUrl),
+    ],
+    shortcut: [
+      { url: '/logo/favicon.png' },
+      new URL('/logo/favicon.png', baseUrl),
+    ],
+    apple: [
+      { url: '/logo/favicon.png' },
+      new URL('/logo/favicon.png', baseUrl),
+    ],
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/logo/favicon.png',
+    },
+  },
+  manifest: `${baseUrl}/manifest.json`, // Consider adding a web app manifest
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html>
+    <html lang="en" className={`${inter.variable} font-sans`}>
       <head>
+        {/* Additional meta tags for better SEO */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" href={metadata.favicons.apple} />
-        <link rel="icon" href={metadata.favicons.android} />
-        <link rel="icon" href={metadata.favicons.ms} />
-        <title>{`${metadata.title} - ${metadata.description}`}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords} />
-        <meta name="og:title" content={metadata.title} />
-        <meta name="og:description" content={metadata.description} />
-        <meta name="og:image" alt={metadata.image.alt} content={metadata.image.src} />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="alternate" type="application/rss+xml" href={`${baseUrl}/rss.xml`} /> {/* Consider adding RSS feed */}
       </head>
-      <body className={`${inter.variable} font-sans`}>
+      <body>
         <Navbar />
         {children}
         <Footer />

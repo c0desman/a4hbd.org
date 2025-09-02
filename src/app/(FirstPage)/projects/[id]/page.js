@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import CTACollaboration from '@/components/reusable/CTACollaboration';
@@ -94,16 +94,24 @@ export default function ProjectSingle({ params }) {
     fetchProject();
   }, [id]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
-          <p className="mt-4 text-lg">Loading project details...</p>
-        </div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (popupImgIndex === null || !project?.images) return;
+
+      if (e.key === 'ArrowRight') {
+        setPopupImgIndex(prev => (prev < project.images.length - 1 ? prev + 1 : prev));
+      }
+      if (e.key === 'ArrowLeft') {
+        setPopupImgIndex(prev => (prev > 0 ? prev - 1 : prev));
+      }
+      if (e.key === 'Escape') {
+        setPopupImgIndex(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [popupImgIndex, project?.images]);
 
   if (error) {
     return (
@@ -163,22 +171,24 @@ export default function ProjectSingle({ params }) {
             viewport={{ once: true }}
           >
             {project.initiatives?.[0] && (
-              <div className="flex items-center gap-2 mb-4">
-                {project.initiatives[0].imagepath && (
-                  <div className="relative w-10 h-10">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${project.initiatives[0].imagepath.replace(/\\/g, "/")}`}
-                      alt={project.initiatives[0].name}
-                      fill
-                      className="rounded-full object-cover"
-                      sizes="40px"
-                    />
-                  </div>
-                )}
-                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
-                  {project.initiatives[0].name}
-                </span>
-              </div>
+              <Link href={`/initiative/${project.initiatives[0].id}`}>
+                <div className="flex items-center gap-2 mb-4">
+                  {project.initiatives[0].imagepath && (
+                    <div className="relative w-10 h-10">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${project.initiatives[0].imagepath.replace(/\\/g, "/")}`}
+                        alt={project.initiatives[0].name}
+                        fill
+                        className="rounded-full object-cover"
+                        sizes="40px"
+                      />
+                    </div>
+                  )}
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
+                    {project.initiatives[0].name}
+                  </span>
+                </div>
+              </Link>
             )}
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               {project.title}
@@ -260,15 +270,14 @@ export default function ProjectSingle({ params }) {
             >
               Importance of the Project
             </motion.h2>
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-lg md:text-xl font-medium text-black text-justify"
-            >
-              {project.importance}
-            </motion.p>
+              className="text-lg md:text-xl font-medium text-black text-justify space-y-2"
+              dangerouslySetInnerHTML={{ __html: project.importance }}
+            />
           </div>
         </section>
       )}
@@ -286,10 +295,12 @@ export default function ProjectSingle({ params }) {
               <h2 className="text-3xl font-bold mb-4">
                 What We Do
               </h2>
-              <p className="text-lg text-gray-700">
-                {project.whatwedo}
-              </p>
+              <div
+                className="text-lg text-gray-700 space-y-2"
+                dangerouslySetInnerHTML={{ __html: project.whatwedo }}
+              />
             </motion.div>
+
             {project.filepath && (
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -309,6 +320,8 @@ export default function ProjectSingle({ params }) {
         <section className="overflow-x-hidden bg-gray-100 relative">
           <div className="max-w-screen-xl mx-auto px-4 pt-10 pb-8">
             <h2 className="text-2xl font-bold text-center mb-6">Photo Gallery</h2>
+
+            {/* Gallery Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {project.images.map((img, i) => (
                 <motion.div
@@ -319,31 +332,36 @@ export default function ProjectSingle({ params }) {
                   transition={{ duration: 0.4 }}
                   viewport={{ once: true }}
                   onClick={() => setPopupImgIndex(i)}
-                  className="cursor-pointer overflow-hidden rounded-md aspect-[4/3] relative"
+                  className="cursor-pointer overflow-hidden rounded-md aspect-square relative"
                 >
                   {renderImage(img.imagepath, img.alt || img.title || `Gallery Image ${i}`, "object-cover rounded-md")}
                 </motion.div>
               ))}
             </div>
 
+            {/* Popup Modal */}
             {popupImgIndex !== null && (
-              <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+              <div
+                className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+                onClick={() => setPopupImgIndex(null)}
+              >
+                {/* Close Button */}
                 <button
-                  onClick={() => setPopupImgIndex(null)}
+                  onClick={(e) => { e.stopPropagation(); setPopupImgIndex(null); }}
                   className="absolute top-4 right-6 text-white text-3xl hover:text-red-400 cursor-pointer transition"
                 >
                   &times;
                 </button>
 
+                {/* Left Arrow */}
                 <button
-                  onClick={() =>
-                    setPopupImgIndex((prev) => (prev > 0 ? prev - 1 : prev))
-                  }
+                  onClick={(e) => { e.stopPropagation(); setPopupImgIndex(prev => (prev > 0 ? prev - 1 : prev)); }}
                   className="absolute left-4 text-white text-4xl hover:text-gray-300 cursor-pointer transition"
                 >
                   &#10094;
                 </button>
 
+                {/* Image */}
                 <div className="max-w-4xl w-full px-4">
                   {renderImage(
                     project.images[popupImgIndex].imagepath,
@@ -354,12 +372,9 @@ export default function ProjectSingle({ params }) {
                   )}
                 </div>
 
+                {/* Right Arrow */}
                 <button
-                  onClick={() =>
-                    setPopupImgIndex((prev) =>
-                      prev < project.images.length - 1 ? prev + 1 : prev
-                    )
-                  }
+                  onClick={(e) => { e.stopPropagation(); setPopupImgIndex(prev => (prev < project.images.length - 1 ? prev + 1 : prev)); }}
                   className="absolute right-4 text-white text-4xl hover:text-gray-300 cursor-pointer transition"
                 >
                   &#10095;
@@ -375,36 +390,48 @@ export default function ProjectSingle({ params }) {
         <section className="overflow-x-hidden bg-white">
           <div className="max-w-screen-xl mx-auto px-4 pt-10 pb-8">
             <h2 className="text-2xl font-bold text-center mb-6">Video Gallery</h2>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {project.videos.map((video, i) => (
-                <motion.div
-                  key={video.id || i}
-                  whileHover={{ scale: 1.02 }}
-                  className="aspect-video overflow-hidden rounded-xl relative cursor-pointer"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                  viewport={{ once: true }}
-                  onClick={() => {
-                    setCurrentMedia('video');
-                    window.open(video.videourl, '_blank');
-                  }}
-                >
-                  {video.videourl?.includes('youtube.com') ? (
-                    <iframe
-                      src={video.videourl.replace('watch?v=', 'embed/')}
-                      title={video.title || `Video ${i}`}
-                      className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  ) : (
-                    <div className="bg-black w-full h-full flex items-center justify-center">
-                      <span className="text-white">Video Preview</span>
-                    </div>
-                  )}
-                </motion.div>
-              ))}
+              {project.videos.map((video, i) => {
+                if (!video?.videourl) return null; // skip videos with no URL
+                
+                const isYouTube = video.videourl.includes('youtube.com');
+                const embedUrl = isYouTube ? video.videourl.replace('watch?v=', 'embed/') : video.videourl;
+
+                return (
+                  <motion.div
+                    key={video.id || i}
+                    whileHover={{ scale: 1.02 }}
+                    className="aspect-video overflow-hidden rounded-xl relative cursor-pointer bg-black flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    viewport={{ once: true }}
+                    onClick={() => {
+                      setCurrentMedia('video');
+                      // open YouTube or local video in new tab
+                      window.open(video.videourl, '_blank');
+                    }}
+                  >
+                    {isYouTube ? (
+                      <iframe
+                        src={embedUrl}
+                        title={video.title || `Video ${i}`}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <div className="bg-black w-full h-full flex items-center justify-center">
+                        <span className="text-white text-center px-2">
+                          {video.title || `Video ${i}`}<br />
+                          (Preview unavailable)
+                        </span>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -416,33 +443,43 @@ export default function ProjectSingle({ params }) {
           <div className="max-w-screen-xl mx-auto px-4">
             <h2 className="text-2xl font-bold text-center mb-6">Project Types</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {project.projecttypes.map((type) => (
-                <Link 
-                  href={`/projecttype/${type.id}`} 
-                  key={type.id}
-                  passHref
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="bg-white rounded-xl shadow-md p-4 cursor-pointer hover:shadow-lg transition-transform transform hover:scale-105"
+              {project.projecttypes.map((type) => {
+                // Strip HTML tags and truncate to 80 characters
+                const plainDescription = type.shortdescription
+                  ? type.shortdescription.replace(/<\/?[^>]+(>|$)/g, "")
+                  : "";
+                const truncatedDescription = plainDescription.length > 80
+                  ? plainDescription.slice(0, 77) + "..."
+                  : plainDescription;
+
+                return (
+                  <Link 
+                    href={`/projecttype/${type.id}`} 
+                    key={type.id}
+                    passHref
                   >
-                    {type.seo?.imagepath && (
-                      renderImage(
-                        type.seo.imagepath,
-                        type.title,
-                        "rounded-lg mb-4 w-full aspect-video object-cover",
-                        400,
-                        300
-                      )
-                    )}
-                    <h3 className="text-xl font-semibold mb-2">{type.title}</h3>
-                    <p>{type.shortdescription}</p>
-                  </motion.div>
-                </Link>
-              ))}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      viewport={{ once: true }}
+                      className="bg-white rounded-xl shadow-md p-4 cursor-pointer hover:shadow-lg transition-transform transform hover:scale-105 flex flex-col h-full"
+                    >
+                      {type.seo?.imagepath && (
+                        renderImage(
+                          type.seo.imagepath,
+                          type.title,
+                          "rounded-lg mb-4 w-full aspect-video object-cover",
+                          400,
+                          300
+                        )
+                      )}
+                      <h3 className="text-xl font-semibold mb-2">{type.title}</h3>
+                      <p className="text-gray-600 flex-1">{truncatedDescription}</p>
+                    </motion.div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -453,7 +490,7 @@ export default function ProjectSingle({ params }) {
         <section className="overflow-x-hidden bg-gray-50">
           <div className="max-w-screen-xl mx-auto px-4 pt-10 pb-8">
             <h2 className="text-2xl font-bold text-center mb-6">Frequently Asked Questions</h2>
-            <div className="max-w-3xl mx-auto space-y-4">
+            <div className="mx-auto space-y-4">
               {project.faqs.map((faq, i) => (
                 <motion.div
                   key={faq.id || i}
