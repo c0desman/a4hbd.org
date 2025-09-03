@@ -24,7 +24,7 @@ const navItems = [
     path: '#',
     submenu: [
       { name: 'Education Support', path: '/initiative/2' },
-      { name: 'Emergency Aid', path: '/initiative/3' },
+      // { name: 'Emergency Aid', path: '/initiative/3' },
       { name: 'Healthcare Project', path: '/initiative/4' },
       { name: 'Orphan Sponsoring', path: '/initiative/5' },
       { name: 'Water and Sanitation Project', path: '/initiative/6' },
