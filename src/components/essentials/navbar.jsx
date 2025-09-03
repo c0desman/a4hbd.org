@@ -75,12 +75,12 @@ const Navbar = () => {
                 </div>
 
                 {item.submenu && (
-                  <div className="absolute top-full left-0 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-all duration-200 z-10">
+                  <div className="absolute top-full left-0 w-80 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-all duration-200 z-10 whitespace-nowrap">
                     {item.submenu.map((sub, index) => (
                       <Link
                         key={index}
                         href={sub.path}
-                        className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 text-sm"
+                        className="block border-b border-gray-200/100 px-4 py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 text-sm"
                       >
                         {sub.name}
                       </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
                   onClick={() => {
                     if (!item.submenu) setMobileOpen(false);
                   }}
-                  className="block w-full"
+                  className="block w-full border-b border-gray-200/100"
                 >
                   {item.name}
                 </Link>
@@ -151,7 +151,7 @@ const Navbar = () => {
                       key={index}
                       href={sub.path}
                       onClick={() => setMobileOpen(false)}
-                      className="block text-gray-600 hover:text-indigo-600 text-sm"
+                      className="block text-gray-600 hover:text-indigo-600 text-sm border-b border-gray-200/100"
                     >
                       {sub.name}
                     </Link>
