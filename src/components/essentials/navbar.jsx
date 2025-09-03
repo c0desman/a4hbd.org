@@ -20,7 +20,7 @@ const navItems = [
   },
   {
     id: 3,
-    name: 'Our Works',
+    name: 'Our Initiatives',
     path: '#',
     submenu: [
       { name: 'Education Support', path: '/initiative/2' },
@@ -29,12 +29,13 @@ const navItems = [
       { name: 'Orphan Sponsoring', path: '/initiative/5' },
       { name: 'Water and Sanitation Project', path: '/initiative/6' },
       { name: 'Rohingya Response', path: '/initiative/7' },
-      { name: 'Climate Actions', path: '/initiative/8' },
-      { name: 'Youth Development', path: '/initiative/9' },
-      { name: 'Religious and Infrastructural Development', path: '/initiative/10' },
+      // { name: 'Climate Actions', path: '/initiative/8' },
+      // { name: 'Youth Development', path: '/initiative/9' },
+      { name: 'Religious and Welfare Initiatives', path: '/initiative/11' },
+      { name: 'Infrastructural Development', path: '/initiative/10' },
     ],
   },
-  { id: 4, name: 'Our Stories', path: '/stories' },
+  { id: 4, name: 'Updates & Stories', path: '/stories' },
   { id: 5, name: 'Contact Us', path: '/contact' },
 ];
 
