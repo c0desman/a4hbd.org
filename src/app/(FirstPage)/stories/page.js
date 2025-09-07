@@ -232,7 +232,12 @@ export default function BlogPage() {
 
                     {/* 4. 1 line of description */}
                     <p className="text-sm text-gray-600 line-clamp-1">
-                      {story.content.replace(/<[^>]*>?/gm, '').substring(0, 100)}...
+                      {story.content
+                        ?.replace(/<[^>]+>/g, '')     // remove all HTML tags
+                        .replace(/\s+/g, ' ')         // collapse extra spaces/newlines
+                        .trim()
+                        .slice(0, 100)}{/* limit characters */}
+                      {story.content.replace(/<[^>]+>/g, '').length > 100 && '...'}
                     </p>
 
                     {/* Bottom section */}
