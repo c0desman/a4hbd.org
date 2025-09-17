@@ -31,7 +31,7 @@ const HeroSection = () => {
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
-                href="/donation"
+                href="/projects"
                 className="bg-secondary hover:bg-indigo-700 hover:text-white text-black font-bold px-5 py-2.5 sm:px-8 sm:py-3 rounded-full animate-fadeInLeft"
                 style={{ animationDelay: '0.4s' }}
               >

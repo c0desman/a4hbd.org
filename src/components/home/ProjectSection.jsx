@@ -70,7 +70,7 @@ const ProjectSection = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }}>
             <Link
-              href="/about"
+              href="/projects"
               className="inline-block py-3 px-8 mt-4 rounded-lg text-white bg-primary font-bold border border-primary hover:bg-indigo-700 hover:text-primary transition"
             >
               Our Projects

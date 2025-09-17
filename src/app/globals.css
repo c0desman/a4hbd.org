@@ -23,6 +23,44 @@ h6 {
 }
 
 /* Custom Components */
+/* ===========================
+   Gradient Button Animation
+   =========================== */
+
+/* Define a flowing gradient background */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Reusable shining gradient class */
+.gradient-button {
+  background: linear-gradient(
+    270deg,
+    #0fa5db,
+    #38bdf8,
+    #0fa5db,
+    #06b6d4
+  );
+  background-size: 300% 300%;
+  color: #fff;
+  animation: gradientFlow 4s ease infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient-button:hover {
+  background: #5a595c;
+  color: white;
+  box-shadow: 0 4px 15px rgba(15, 165, 219, 0.3);
+}
+
 @Layer components {
     .mask-triangle-tl {
         clip-path: polygon(

@@ -4,7 +4,7 @@ import { Facebook, Instagram, Twitter, Youtube, Music2, Ghost } from "lucide-rea
 
 const socialLinks = [
   { href: "https://facebook.com/a4hbangladesh", icon: Facebook },
-  { href: "https://instagram.com/a4hbanglades", icon: Instagram },
+  { href: "https://instagram.com/a4hbangladesh", icon: Instagram },
   { href: "https://x.com/a4hbangladesh", icon: Twitter },
   { href: "https://tiktok.com/@a4hbangladesh", icon: Music2 },
   { href: "https://snapchat.com/@a4hbangladesh", icon: Ghost },
