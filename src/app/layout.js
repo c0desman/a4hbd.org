@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 import "./globals.css";
+import Script from 'next/script';
 import Navbar from "@/components/essentials/navbar";
 import Footer from "@/components/essentials/footer";
 
@@ -89,6 +90,16 @@ export default function RootLayout({ children }) {
         <link rel="alternate" type="application/rss+xml" href={`${baseUrl}/rss.xml`} /> {/* Consider adding RSS feed */}
       </head>
       <body>
+        {/* FB root container required by SDK */}
+        <div id="fb-root" />
+
+        {/* Load Facebook SDK once for the whole app */}
+        <Script
+          id="facebook-jssdk"
+          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v24.0&appId=1849384698982784"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
         <Navbar />
         {children}
         <Footer />
