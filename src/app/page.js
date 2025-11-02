@@ -9,11 +9,14 @@ import ProjectsAppeal from "@/components/home/projectsAppeal";
 export default function Home() {
   return (
     <div className="mx-auto bg-gray-100">
+      {/* Its quote */}
       {/* <HeroSection /> */}
       <HeroCarousel />
+      {/* Its quote */}
       {/* <HelpfulCardsSection /> */}
       <AboutUsSection />
       <AchievementSection />
+      {/* Its quote */}
       {/* <ProjectSection /> */}
       <ProjectsAppeal />
       <CTACollaboration />
