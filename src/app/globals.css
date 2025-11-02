@@ -6,6 +6,19 @@
 :root {
   --color-primary: #0B98D5;
   --color-secondary: #F9B118;
+  --header-height: 0; /* default for desktop */
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 50px; /* tablet */
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 120px; /* mobile */
+  }
 }
 
 /* Apply fonts to all elements */
@@ -51,6 +64,30 @@ h6 {
   );
   background-size: 300% 300%;
   color: #fff;
+  animation: gradientFlow 4s ease infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient-background-announcement {
+  background: linear-gradient(
+    270deg,
+    rgb(6 182 212),
+    rgb(21 94 117),
+    rgb(22 78 99),
+    rgb(6 182 212)
+  );
+  animation: gradientFlow 4s ease infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient-background {
+  background: linear-gradient(
+    270deg,
+    #0fa5db,
+    #38bdf8,
+    #0fa5db,
+    #06b6d4
+  );
   animation: gradientFlow 4s ease infinite;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

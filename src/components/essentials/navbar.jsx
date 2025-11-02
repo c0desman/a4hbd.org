@@ -68,6 +68,7 @@ const Navbar = () => {
   const isActive = (path) => pathname === path;
 
   return (
+    <>
     <nav
       className={`fixed top-0 w-full z-50 bg-white transition-shadow ${
         isScrolled ? 'shadow-md' : ''
@@ -220,7 +221,12 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      {/* Announcement Bar */}
+      <div className="gradient-background-announcement text-white text-center text-sm md:text-[20px] py-3 font-semibold">
+        <Link href="/projects/19">❄️ Let's wrap 🧣 the poor and orphaned in warmth this winter ❤️</Link>
+      </div>
     </nav>
+    </>
   );
 };
 

@@ -90,10 +90,10 @@ const AboutUsSection = () => {
               className="relative w-full overflow-hidden rounded-lg"
             >
               <Image
-                src="/images/gallery/about-4.png"
+                src="/images/gallery/about-4.webp"
                 alt="About Us"
-                width={600}
-                height={600}
+                width={1200}
+                height={1200}
                 className="w-full h-auto object-cover"
               />
 

@@ -5,9 +5,9 @@ import Image from 'next/image';
 const HeroSection = () => {
   return (
     <section
-      className="relative bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center bg-no-repeat w-full h-[550px] md:h-[750px]"
+      className="relative bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center bg-no-repeat w-full h-[600px] md:h-[800px]"
     >
-      <div className="max-w-screen-xl mx-auto px-4 relative pt-[100px] md:pt-[150px] pb-[50px] md:pb-[100px]">
+      <div className="max-w-screen-xl mx-auto px-4 relative pt-[200px] md:pt-[200px] pb-[50px] md:pb-[100px]">
         <div className="grid md:grid-cols-2 gap-4 items-center">
           {/* Text Section */}
           <div className="max-w-[615px] my-5">
@@ -46,8 +46,8 @@ const HeroSection = () => {
               <Image
                 src="/images/hero/hero-21.png"
                 alt="Aid For Humanity"
-                width={239}
-                height={388}
+                width={2000}
+                height={2000}
                 className="w-[239px] h-[388px] object-cover transition-transform duration-500 group-hover:-translate-y-2"
               />
             </div>
@@ -55,8 +55,8 @@ const HeroSection = () => {
               <Image
                 src="/images/hero/hero-31.png"
                 alt="Checking Images"
-                width={316}
-                height={514}
+                width={2000}
+                height={2000}
                 className="w-[316px] h-[514px] object-cover transition-transform duration-500 group-hover:-translate-y-2"
               />
             </div>
